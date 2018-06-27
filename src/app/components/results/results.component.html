@@ -1,16 +1,13 @@
-<md-card class="resultsContainer animated bounceInDown" *ngIf="arrayWithResults">
-  <div class="result animatedContainer" *ngFor="let result of arrayWithResults"
+<md-card class="chart-container resultsContainer animated bounceInDown" *ngIf="arrayWithResults"
+  id="radarChart">
+  <!-- <div class="result animatedContainer" *ngFor="let result of arrayWithResults"
     [style.left.px]="result['x_position']"
     [style.bottom.px]="result['y_position']"
     [style.background-color]="result['color']"
     [style.animation-delay.s]="result['delay']"
     [class.isOurResult]="result['isOurResult']">
     <div class="animatedContainer"></div>
-  </div>
-  <div class="resultados">
-    <span class="titulo">Resultados.</span>
-    <span class="cancer">Cancer</span>
-    <span class="no-cancer">No cancer</span>
-    <span class="resultado">Tu resultado</span>
-  </div>
+  </div> -->
+  <div id="chart"></div>
+
 </md-card>

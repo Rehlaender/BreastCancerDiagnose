@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ElementRef, Inject } from '@an
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DOCUMENT } from '@angular/platform-browser';
 
-import { PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
+// import { PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
 
 import { CancerResultService } from '../../services/cancer-result.service';
 import { CancerFormService } from '../../services/cancer-form.service';
@@ -12,7 +12,7 @@ declare var synaptic: any;
 @Component({
   selector: 'cancer-form',
   templateUrl: './cancer-form.component.html',
-  providers: [ CancerFormService, PageScrollService ],
+  providers: [ CancerFormService ],
   styleUrls: ['./cancer-form.component.css']
 })
 export class CancerFormComponent implements OnInit {
@@ -22,7 +22,7 @@ export class CancerFormComponent implements OnInit {
   cancerForm: FormGroup;
 
   constructor(
-    private _scroll: PageScrollService,
+    // private _scroll: PageScrollService,
     public fb: FormBuilder,
     private _cancerApi: CancerResultService,
     @Inject(DOCUMENT) private document: any ) {
@@ -75,8 +75,8 @@ export class CancerFormComponent implements OnInit {
   }
 
   goNextSection() {
-    let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#result');
-    this._scroll.start(pageScrollInstance);
+    // let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#result');
+    // this._scroll.start(pageScrollInstance);
   }
 
   ngOnInit() {

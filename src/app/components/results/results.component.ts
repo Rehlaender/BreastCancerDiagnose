@@ -1,4 +1,7 @@
 import { Component, OnInit , Input } from '@angular/core';
+import * as d3 from 'd3';
+import * as c3 from 'c3';
+import * as radarChartD3 from './RadarChart';
 
 @Component({
   selector: 'results',
@@ -10,12 +13,49 @@ export class ResultsComponent implements OnInit {
   @Input() testingArray;
 
   arrayWithResults = [];
-
   currentAnswer: any;
-
   cancerApiJSON:any;
 
+  //chart stuff
+  RadarCharter: any;
+  chartData:any;
   constructor() { }
+
+  mapArrayWithResults() {
+    const newCordsX = this.arrayWithResults.map(data => data.x_position);
+    const newCordsY = this.arrayWithResults.map(data => data.y_position);
+    return {x: newCordsX, y: newCordsY};
+  }
+
+  ngAfterViewInit() {
+    const results = this.mapArrayWithResults();
+    let chart = c3.generate({
+    bindto: '#chart',
+      data: {
+          xs: {
+              posibilidad: 'posibilidad_x',
+          },
+          // iris data from R
+          columns: [
+              ["posibilidad_x", ...results.x],
+              ["posibilidad", ...results.y],
+          ],
+          type: 'scatter'
+      },
+      axis: {
+          x: {
+              label: 'Posibilidad de no contraer cancer',
+              tick: {
+                  fit: false
+              }
+          },
+          y: {
+              label: 'Posibilidad de no contraer cancer'
+          }
+      }
+    });
+  }
+
 
   pushTheResult(currentAnswer) {
     let result = {};
@@ -86,6 +126,7 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
     this.fillTheResultsArray();
+
   }
 
   popLastEntry() {

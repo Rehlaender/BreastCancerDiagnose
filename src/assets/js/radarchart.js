@@ -1,6 +1,4 @@
-import * as d3 from 'd3';
-
-export let RadarChart = {
+var RadarChart = {
   defaultConfig: {
     containerClass: 'radar-chart',
     w: 600,
@@ -10,7 +8,7 @@ export let RadarChart = {
     levels: 3,
     maxValue: 0,
     radians: 2 * Math.PI,
-    color: d3.scaleOrdinal(d3.schemeCategory10),
+    color: d3.scale.category10(),
     axisLine: true,
     axisText: true,
     circles: true,
